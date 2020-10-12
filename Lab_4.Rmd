@@ -1,0 +1,62 @@
+---
+title: "Lab_4"
+author: "Jack Langenwalter"
+date: "10/11/2020"
+output: html_document
+---
+
+```{r}
+library(readxl)
+defense
+```
+
+```{r}
+bio$Weight <- as.numeric(bio$Weight)
+bio$Height <- as.numeric(bio$Height)
+defensive$Opponent_Opponent <-as.numeric(defensive$Opponent_Opponent)
+defensive$Turnover_FR <- as.numeric(defensive$Turnover_FR)
+defensive$Turnover_INT <- as.numeric(defensive$Turnover_INT)
+defensive$Pass_QBH <- as.numeric(defensive$Pass_QBH)
+defensive$Pass_PB <- as.numeric(defensive$Pass_PB)
+defensive$Tackles_Solo <- as.numeric(defensive$Tackles_Solo)
+defensive$Tackles_ASST <- as.numeric(defensive$Tackles_Solo)
+defensive$Tackles_ASST <- as.numeric(defensive$Tackles_ASST)
+defensive$Tackles_TFL <- as.numeric(defensive$Tackles_TFL)
+defensive$Tackles_Sack <- as.numeric(defensive$Tackles_Sack)
+defensive$Turnover_FF <- as.numeric(defensive$Turnover_FF)
+offense$Rushing_ATT <- as.numeric(offense$Rushing_ATT)
+offense$Rushing_YDS <- as.numeric(offense$Rushing_YDS)
+offense$Rushing_TD <- as.numeric(offense$Rushing_TD)
+offense$Receiving_REC <- as.numeric(offense$Receiving_REC)
+offense$Receiving_YDS <- as.numeric(offense$Receiving_YDS)
+offense$Receiving_TD <- as.numeric(offense$Receiving_TD)
+offense$Passing_YDS <- as.numeric(offense$Passing_YDS)
+offense$Passing_TD <- as.numeric(offense$Passing_TD)
+offense$Passing_INT <- as.numeric(offense$Passing_INT)
+```
+```{r}
+defclean <- defensive
+offclean <- offense
+bioclean <- bio
+bioclean
+```
+2.1
+```{r}
+library(tidyr)
+defclean %>%
+  pivot_longer(!Name, names_to = "stats", values_to = "stat")
+```
+2.2 ## Tackles_TFL, Tackles_Sack, Turnover_FF, Turnover_FR, & Turnover_INT are all the rarest stats to have.
+
+2.3 ## Iowa state average more solo tackles than Notre Dame and therefore had a better defense as solo tackles are an indicator of a good defense.
+```{r}
+defclean$Opponent_Opponent <- as.character(defclean$Opponent_Opponent)
+plot(defclean$Tackles_Solo, defclean$Opponent_Opponent)
+```
+```{r}
+bioclean %>%
+  separate(Hometown, c('Town', 'State', sep="," ))
+
+```
+
+## 3. Most ISU defensive and offensive players tend to come from Iowa. Iowa has the highest number for both. Brock Purdy by far has the best stats as compared to other QB's on the same roster. He usually out performs his team. Brock Purdy had a very large improvement from 2018-2019 with an increase in TD from 16 to 27 and yards from 2250 to 3982. He also had more completions and attempts in 2019 than 2018.
